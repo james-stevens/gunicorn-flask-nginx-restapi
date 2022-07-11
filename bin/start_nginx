@@ -1,0 +1,10 @@
+#! /bin/sh
+# (c) Copyright 2019-2022, James Stevens ... see LICENSE for details
+# Alternative license arrangements possible, contact me for more information
+
+opts="daemon off;"
+conf="nginx.conf"
+
+mkdir -p /run/nginx/
+sleep 1
+exec /usr/sbin/nginx -c /etc/nginx/${conf} -g "${opts}"

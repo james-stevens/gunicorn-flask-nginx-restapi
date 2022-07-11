@@ -1,0 +1,18 @@
+#! /bin/sh
+# (c) Copyright 2019-2022, James Stevens ... see LICENSE for details
+# Alternative license arrangements are possible, contact me for more information
+
+session="${1}"
+
+workers=3
+if test "${REST_THREADS}"; then workers="${REST_THREADS}"; fi
+
+cd /opt/python
+exec gunicorn \
+        --workers ${workers} \
+        --log-syslog \
+        --log-syslog-to udp://127.0.0.1:514 \
+        --log-syslog-facility ${REST_LOG_FACILITY} \
+        --log-level info \
+        --bind unix:/run/wsgi_${session}.sock \
+        wsgi >/dev/null 2>&1

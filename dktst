@@ -1,0 +1,9 @@
+#! /bin/sh
+
+. ./this
+
+env="./env"
+if test -f ./my-env; then env="./my-env"; fi
+if test "$1" -a -f "$1"; then env="$1"; fi
+
+docker run --env-file=${env} -it ${me} /bin/sh
