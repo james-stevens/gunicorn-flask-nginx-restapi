@@ -3,16 +3,20 @@
 # Alternative license arrangements are possible, contact me for more information
 
 session="${1}"
+if test -z "${session}"; then echo "ERROR: no session number"; exit 1; fi
 
 workers=3
 if test "${REST_THREADS}"; then workers="${REST_THREADS}"; fi
+
+facility="local0"
+if test "${REST_LOG_FACILITY}"; then facility="${REST_LOG_FACILITY}"; fi
 
 cd /opt/python
 exec gunicorn \
         --workers ${workers} \
         --log-syslog \
         --log-syslog-to udp://127.0.0.1:514 \
-        --log-syslog-facility ${REST_LOG_FACILITY} \
+        --log-syslog-facility ${facility} \
         --log-level info \
         --bind unix:/run/wsgi_${session}.sock \
-        wsgi >/dev/null 2>&1
+        wsgi >/tmp/start_wsgi.${session}.log 2>&1
