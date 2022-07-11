@@ -23,3 +23,4 @@ COPY myCA.pem myCA-2.pem /etc/ssl/private/
 RUN cd /etc/ssl/private; cat myCA.pem myCA-2.pem >> /etc/ssl/cert.pem
 
 COPY bin /usr/local/bin/
+COPY nginx.conf /etc/nginx/nginx.conf

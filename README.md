@@ -5,11 +5,12 @@ This is a shell container & probably won't run stand-alone
 
 You'll need to add (at least)
 
-- /etc/nginx/nginx.conf
 - /etc/inittab
 
 And install your python/flask application into `/opt/python` with a tiny program called
 `wsgi.py` that looks something like this
+
+You may also want to customise `nginx.conf`
 
 ```
 #! /usr/bin/python3
