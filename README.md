@@ -2,7 +2,10 @@
 REST/API running for Python/Flask applications using Gunicorn &amp; nginx
 
 This is a shell container & probably won't run stand-alone. It is also
-designed to run read-only.
+designed to run read-only, but if you want to run it read only, you
+should run add `RUN python3 -m compileall /opt/python/` to your `Dockerfile`
+*after* you have copied all the code into `/opt/python` so the byte-code
+can be created & stored, as this can't be done at run-time when read-only!!!
 
 You'll need to add (at least)
 
