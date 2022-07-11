@@ -1,0 +1,5 @@
+::respawn:/usr/sbin/syslogd -r -f /run/syslog.conf -n
+::respawn:/usr/local/bin/start_wsgi 1
+::respawn:/usr/local/bin/start_wsgi 2
+::respawn:/usr/local/bin/start_wsgi 3
+::respawn:/usr/local/bin/start_nginx
