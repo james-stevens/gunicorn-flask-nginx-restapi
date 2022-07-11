@@ -1,7 +1,8 @@
 # gunicorn-flask-nginx-restapi
 REST/API running for Python/Flask applications using Gunicorn &amp; nginx
 
-This is a shell container & probably won't run stand-alone
+This is a shell container & probably won't run stand-alone. It is also
+designed to run read-only.
 
 You'll need to add (at least)
 
