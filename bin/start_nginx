@@ -4,6 +4,7 @@
 
 opts="daemon off;"
 conf="nginx.conf"
+if test -f /etc/nginx/htpasswd; then conf="nginx_login.conf"; fi
 
 mkdir -p /run/nginx/
 sleep 1

@@ -9,6 +9,5 @@ if test "$1" -a -f "$1"; then env="$1"; fi
 docker run --read-only --env-file=${env} -it \
 	-p 192.168.1.148:80:80 \
 	-p 127.0.0.1:443:443 -p 127.0.0.1:80:80 \
-	-v /opt/github/registrar/containers/rar-checker/htdocs:/usr/local/htdocs \
 	-v /opt/github/registrar/containers/rar-checker/my-config:/opt/etc \
 	${me}

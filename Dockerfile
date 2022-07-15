@@ -22,8 +22,11 @@ RUN ln -s /dev/shm /run/nginx
 COPY myCA.pem myCA-2.pem /etc/ssl/private/
 RUN cd /etc/ssl/private; cat myCA.pem myCA-2.pem >> /etc/ssl/cert.pem
 
+RUN mkdir -p /usr/local/htdocs
+COPY index.html /usr/local/htdocs
+
 COPY bin /usr/local/bin/
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx_login.conf nginx.conf /etc/nginx/
 
 COPY inittab /etc/inittab
 CMD [ "/usr/local/bin/run_init" ]

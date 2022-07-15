@@ -11,4 +11,12 @@ if test "${SYSLOG_SERVER}"
 
 mkdir /run/nginx; chown nginx: /run/nginx
 
+if test -d /etc/start.d
+	then
+		for file in /etc/start.d/*
+			do
+				. ${file}
+			done
+	fi
+
 exec /sbin/init
