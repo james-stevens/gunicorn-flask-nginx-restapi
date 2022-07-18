@@ -9,7 +9,7 @@ if test "${SYSLOG_SERVER}"
 		echo "*.* -/dev/console"
 	fi > /run/syslog.conf
 
-mkdir /run/nginx; chown nginx: /run/nginx
+/usr/local/bin/make_inittab
 
 if test -d /etc/start.d
 	then

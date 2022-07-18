@@ -4,8 +4,10 @@
 
 opts="daemon off;"
 conf="nginx.conf"
-if test -f /etc/nginx/htpasswd; then conf="nginx_login.conf"; fi
 
-mkdir -p /run/nginx/
+/usr/local/bin/make_nginx_conf
+
+mkdir /run/nginx; chown nginx: /run/nginx
+
 sleep 1
 exec /usr/sbin/nginx -c /etc/nginx/${conf} -g "${opts}"

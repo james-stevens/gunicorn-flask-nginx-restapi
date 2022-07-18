@@ -26,7 +26,7 @@ RUN mkdir -p /usr/local/htdocs
 COPY index.html /usr/local/htdocs
 
 COPY bin /usr/local/bin/
-COPY nginx_login.conf nginx.conf /etc/nginx/
+RUN ln -fns /run/nginx.conf /etc/nginx/nginx.conf
+RUN ln -fns /run/inittab /etc/inittab
 
-COPY inittab /etc/inittab
 CMD [ "/usr/local/bin/run_init" ]

@@ -4,4 +4,4 @@
 
 . ./this
 
-docker image build -t ${me} .
+docker image build -t ${me} $* .
