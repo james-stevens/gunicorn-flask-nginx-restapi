@@ -23,8 +23,15 @@ user nginx;
 error_log syslog:server=unix:/dev/log,facility=${facility},tag=nginx error;
 
 http {
-	access_log syslog:server=unix:/dev/log,facility=${facility},tag=nginx,severity=info;
+"
+if test "${NO_ACCESS_LOGGING}"
+	then
+		echo "	access_log off;"
+	else
+		echo "	access_log syslog:server=unix:/dev/log,facility=${facility},tag=nginx,severity=info;"
+	fi
 
+echo "
 	include         mime.types;
 	default_type    application/octet-stream;
 	sendfile        on;
@@ -51,6 +58,12 @@ if test -f /etc/nginx/htpasswd
 		echo '		auth_basic "Flask REST/API";'
 		echo '		auth_basic_user_file /etc/nginx/htpasswd;'
 	fi
+
+echo '
+			proxy_set_header X-Host            $host;
+			proxy_set_header X-Forwarded-For $remote_addr;
+'
+
 echo "
 			proxy_pass http://api_servers${api_dir};
 			}
