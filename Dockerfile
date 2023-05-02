@@ -3,6 +3,9 @@
 
 FROM alpine:3.16
 
+RUN apk update
+RUN apk upgrade
+
 RUN rmdir /run
 RUN ln -s /dev/shm /run
 RUN apk add nginx curl

@@ -2,6 +2,6 @@
 # (c) Copyright 2019-2022, James Stevens ... see LICENSE for details
 # Alternative license arrangements are possible, contact me for more information
 
-. ./this
+me="$(cat list)"
 
 docker image build -t ${me} $* .

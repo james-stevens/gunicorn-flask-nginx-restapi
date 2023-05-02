@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. ./this
+me="$(cat list)"
 
 env="./env"
 if test -f ./my-env; then env="./my-env"; fi
