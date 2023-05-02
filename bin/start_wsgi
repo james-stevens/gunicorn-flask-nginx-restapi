@@ -12,6 +12,11 @@ facility="local0"
 if test "${REST_LOG_FACILITY}"; then facility="${REST_LOG_FACILITY}"; fi
 
 cd /opt/python
+if test "${NO_ACCESS_LOGGING}"
+	then
+		exec gunicorn --workers ${workers} --bind unix:/run/wsgi_${session}.sock wsgi >/tmp/start_wsgi.${session}.log 2>&1
+	fi
+
 exec gunicorn \
         --workers ${workers} \
         --log-syslog \
