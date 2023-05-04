@@ -14,4 +14,10 @@ do
 done
 
 echo "::respawn:/usr/local/bin/start_nginx"
+
+if test -d /etc/inittab.d
+	then
+		cat /etc/inittab.d/*
+	fi
+
 } > /run/inittab
