@@ -19,4 +19,9 @@ if test -d /etc/start.d
 			done
 	fi
 
+if test -f /usr/local/etc/pre_init
+	then
+		. /usr/local/etc/pre_init
+	fi
+
 exec /sbin/init
