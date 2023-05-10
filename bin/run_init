@@ -1,6 +1,11 @@
 #! /bin/sh
-# (c) Copyright 2019-2022, James Stevens ... see LICENSE for details
+# (c) Copyright 2019-2023, James Stevens ... see LICENSE for details
 # Alternative license arrangements possible, contact me for more information
+
+if test -f /usr/local/etc/pre_init
+	then
+		. /usr/local/etc/pre_init
+	fi
 
 if test "${SYSLOG_SERVER}"
 	then
@@ -17,11 +22,6 @@ if test -d /etc/start.d
 			do
 				. ${file}
 			done
-	fi
-
-if test -f /usr/local/etc/pre_init
-	then
-		. /usr/local/etc/pre_init
 	fi
 
 exec /sbin/init
